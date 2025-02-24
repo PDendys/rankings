@@ -25,7 +25,7 @@ const useManageScores = (initialUsers: UserType[], initialScores: ScoreType[]) =
     })
   };
   
-  // IDEA: Move this logic to Web Worker if needed to proceed a more data
+  // IDEA: Move this logic to Web Worker if needed to process a more data
   const addMultipleScores = (values: { name: string; score: number }[]) => {
     const uniqueNames = [...new Set(values.map(({ name }) => name))];
     let nextUserId = getNextAvailableUserId(users);
