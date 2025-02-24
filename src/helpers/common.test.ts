@@ -1,4 +1,4 @@
-import { buildUrlWithId } from './url';
+import { buildUrlWithId } from './common';
 import { Routes } from '../constants';
 
 describe('url helpers', () => {
