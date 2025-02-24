@@ -1,14 +1,14 @@
 import { useMemo, createContext, PropsWithChildren } from 'react';
-import { ScoreType, UserType } from '@/types';
-import { AddScoreFormValues } from '@/components/add-score-form';
-
+import type { ScoreType, UserType } from '@/types';
+import type { AddScoreFormValuesType } from '@/components/add-score-form';
+import type { ExcelRowType } from '@/components/excel-dropzone';
 import useManageScores from '@/hooks/use-manage-scores';
 
 export type ScoresContextType = {
   users: UserType[];
   scores: ScoreType[];
-  addScore: (score: AddScoreFormValues) => Promise<ScoreType>;
-  addMultipleScores: (scores: { name: string; score: number }[]) => void;
+  addScore: (score: AddScoreFormValuesType) => void;
+  addMultipleScores: (scores: ExcelRowType[]) => void;
 };
 
 type ScoresContextProviderProps = PropsWithChildren<{

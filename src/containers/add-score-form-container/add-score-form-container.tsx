@@ -8,15 +8,15 @@ import {
   ModalCloseButton
 } from '@chakra-ui/react';
 import { Button, useDisclosure } from '@northlight/ui';
-import AddScoreForm, { type AddScoreFormValues } from '@/components/add-score-form';
+import AddScoreForm, { type AddScoreFormValuesType } from '@/components/add-score-form';
 import useScoresProvider from '@/hooks/use-scores-provider';
 
 const AddScoreFormContainer = () => {
   const { addScore } = useScoresProvider()
   const { isOpen, onOpen, onClose } = useDisclosure();
   
-  const handleOnFormSubmit = async (formValues: AddScoreFormValues): Promise<void> => {
-    await addScore(formValues);
+  const handleOnFormSubmit = (formValues: AddScoreFormValuesType): void => {
+    addScore(formValues);
     onClose();
   };
   
