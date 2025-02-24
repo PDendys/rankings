@@ -11,7 +11,7 @@ import { Button, useDisclosure } from '@northlight/ui';
 import AddScoreForm, { type AddScoreFormValues } from '@/components/add-score-form';
 import useScoresProvider from '@/hooks/use-scores-provider';
 
-const ScoreAddContainer = () => {
+const AddScoreFormContainer = () => {
   const { addScore } = useScoresProvider()
   const { isOpen, onOpen, onClose } = useDisclosure();
   
@@ -37,4 +37,4 @@ const ScoreAddContainer = () => {
   )
 }
 
-export default ScoreAddContainer;
+export default AddScoreFormContainer;

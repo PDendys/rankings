@@ -3,7 +3,7 @@ import { getBestScoresByUser } from '@/helpers';
 import useScoresProvider from '@/hooks/use-scores-provider';
 import BestScoresTable from '@/components/best-scores-table';
 
-const BestScoresContainer = () => {
+const BestScoresTableContainer = () => {
   const { users, scores } = useScoresProvider();
   const rankingData = useMemo(() => getBestScoresByUser(users, scores), [users, scores]);
   
@@ -12,4 +12,4 @@ const BestScoresContainer = () => {
   )
 }
 
-export default BestScoresContainer;
+export default BestScoresTableContainer;

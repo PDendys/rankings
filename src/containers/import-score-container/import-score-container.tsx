@@ -11,7 +11,7 @@ import { Button, useDisclosure } from '@northlight/ui';
 import useScoresProvider from '@/hooks/use-scores-provider';
 import ExcelDropzone, { type ExcelRowType } from '@/components/excel-dropzone';
 
-const ScoreImportContainer = () => {
+const ImportScoreContainer = () => {
   const { addMultipleScores } = useScoresProvider()
   const { isOpen, onOpen, onClose } = useDisclosure();
   
@@ -37,4 +37,4 @@ const ScoreImportContainer = () => {
   )
 }
 
-export default ScoreImportContainer;
+export default ImportScoreContainer;
