@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { Table, Thead, Tbody, Tr, Th, Td, Icon } from '@chakra-ui/react';
 import { ChevronRightSolid } from '@northlight/icons';
-import { buildUrlWithId } from '@/helpers';
+import { capitalizeFirstLetter, buildUrlWithId } from '@/helpers';
 import { Routes } from '@/constants';
 import { Button } from '@northlight/ui';
 import type { BestScoreItemType } from '@/types'
@@ -24,7 +24,7 @@ const BestScoresTable = ({ data }: BestScoresTableProps) => (
       {data.map(({ id, userId, name, score }, index) => (
         <Tr key={id}>
           <Td>{userId}</Td>
-          <Td>{name}</Td>
+          <Td>{capitalizeFirstLetter(name)}</Td>
           <Td>{score}</Td>
           <Td>
             <NavLink to={buildUrlWithId(Routes.USER_SCORES, userId)}>
