@@ -1,32 +1,40 @@
 import { useState } from 'react';
 import { ScoreType, UserType } from '@/types';
-import { AddScoreFormValues } from '@/components/add-score-form';
+import type { AddScoreFormValuesType } from '@/components/add-score-form';
+import type { ExcelRowType } from '@/components/excel-dropzone';
 import { getNextAvailableUserId, getUserByName } from '@/helpers';
 import { createNewUser, createNewScore } from './utils';
 
-const useManageScores = (initialUsers: UserType[], initialScores: ScoreType[]) => {
+type useManageScoresReturnType = {
+  users: UserType[];
+  scores: ScoreType[];
+  addScore: (values: AddScoreFormValuesType) => void;
+  addMultipleScores: (values: ExcelRowType[]) => void;
+};
+
+const useManageScores = (
+  initialUsers: UserType[],
+  initialScores: ScoreType[]
+): useManageScoresReturnType => {
   const [users, setUsers] = useState<UserType[]>(initialUsers);
   const [scores, setScores] = useState<ScoreType[]>(initialScores);
   
-  const addScore = async (values: AddScoreFormValues): Promise<ScoreType> => {
-    return new Promise((resolve) => {
-      const user = getUserByName(values.name, users);
-      const userExist = !!user;
-      const userId = user?._id ?? getNextAvailableUserId(users);
-      
-      if (!userExist) {
-        const newUser = createNewUser(values.name, userId);
-        setUsers(prev => [...prev, newUser]);
-      }
-      
-      const newScore = createNewScore(userId, values.score);
-      setScores(prev => [...prev, newScore]);
-      resolve(newScore);
-    })
+  const addScore = (values: AddScoreFormValuesType): void => {
+    const user = getUserByName(values.name, users);
+    const userExist = !!user;
+    const userId = user?._id ?? getNextAvailableUserId(users);
+    
+    if (!userExist) {
+      const newUser = createNewUser(values.name, userId);
+      setUsers(prev => [...prev, newUser]);
+    }
+    
+    const newScore = createNewScore(userId, values.score);
+    setScores(prev => [...prev, newScore]);
   };
   
   // IDEA: Move this logic to Web Worker if needed to process a more data
-  const addMultipleScores = (values: { name: string; score: number }[]) => {
+  const addMultipleScores = (values: ExcelRowType[]) => {
     const uniqueNames = [...new Set(values.map(({ name }) => name))];
     let nextUserId = getNextAvailableUserId(users);
     

@@ -1,13 +1,13 @@
 import React from 'react';
 import { Form, TextField, NumberInputField, Button, Box, Flex } from '@northlight/ui';
 
-export type AddScoreFormValues = {
+export type AddScoreFormValuesType = {
   name: string;
   score: number;
 }
 
 type AddScoreFormProps = {
-  onSubmit: (formValues: AddScoreFormValues) => void;
+  onSubmit: (formValues: AddScoreFormValuesType) => void;
   onCancel: () => void;
 }
 

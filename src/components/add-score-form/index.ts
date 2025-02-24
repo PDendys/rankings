@@ -1,5 +1,5 @@
-import AddScoreForm, { AddScoreFormValues } from './add-score-form';
+import AddScoreForm, { type AddScoreFormValuesType } from './add-score-form';
 
-export type { AddScoreFormValues };
+export type { AddScoreFormValuesType };
 
 export default AddScoreForm;
