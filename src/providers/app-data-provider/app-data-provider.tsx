@@ -2,24 +2,24 @@ import { useMemo, createContext, PropsWithChildren } from 'react';
 import type { ScoreType, UserType } from '@/types';
 import type { AddScoreFormValuesType } from '@/components/add-score-form';
 import type { ExcelRowType } from '@/components/excel-dropzone';
-import useManageScores from '@/hooks/use-manage-scores';
+import useDataManage from '@/hooks/use-data-manage';
 
-export type ScoresContextType = {
+export type AppDataContextType = {
   users: UserType[];
   scores: ScoreType[];
   addScore: (score: AddScoreFormValuesType) => void;
   addMultipleScores: (scores: ExcelRowType[]) => void;
 };
 
-type ScoresContextProviderProps = PropsWithChildren<{
+type AppDataProviderProps = PropsWithChildren<{
   initialUsers: UserType[];
   initialScores: ScoreType[];
 }>;
 
-export const ScoresContext = createContext<ScoresContextType | null>(null);
+export const AppDataContext = createContext<AppDataContextType | null>(null);
 
-export const ScoresContextProvider = ({ children, initialUsers, initialScores }: ScoresContextProviderProps) => {
-  const { scores, users, addScore, addMultipleScores } = useManageScores(initialUsers, initialScores);
+export const AppDataProvider = ({ children, initialUsers, initialScores }: AppDataProviderProps) => {
+  const { scores, users, addScore, addMultipleScores } = useDataManage(initialUsers, initialScores);
   
   const contextValue = useMemo(() => ({
     users,
@@ -29,6 +29,6 @@ export const ScoresContextProvider = ({ children, initialUsers, initialScores }:
   }), [users, scores]);
   
   return (
-    <ScoresContext.Provider value={contextValue}>{children}</ScoresContext.Provider>
+    <AppDataContext.Provider value={contextValue}>{children}</AppDataContext.Provider>
   );
 };
