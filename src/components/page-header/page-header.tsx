@@ -9,23 +9,21 @@ type PageHeaderProps = {
   backLink?: RouteKeysType;
 }
 
-const PageHeader = ({ title, backLink }: PageHeaderProps) => {
-  return (
-    <Box as="header" mb={5}>
-      <Box mb={1}>
-        <H1>{title}</H1>
-      </Box>
-      {
-        backLink && (
-          <NavLink to={backLink}>
-            <Button variant="link" size="sm" leftIcon={<Icon as={ChevronLeftSolid} />}>
-              Back
-            </Button>
-          </NavLink>
-        )
-      }
-      </Box>
-  )
-}
+const PageHeader = ({ title, backLink }: PageHeaderProps) => (
+  <Box as="header" mb={5}>
+    <Box mb={1}>
+      <H1>{title}</H1>
+    </Box>
+    {
+      backLink && (
+        <NavLink to={backLink}>
+          <Button variant="link" size="sm" leftIcon={<Icon as={ChevronLeftSolid} />}>
+            Back
+          </Button>
+        </NavLink>
+      )
+    }
+  </Box>
+);
 
 export default PageHeader;

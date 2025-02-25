@@ -7,15 +7,13 @@ type PageLayoutProps = PropsWithChildren<{
   backLink?: RouteKeysType;
 }>;
 
-const PageLayout = ({ children, title, backLink }: PageLayoutProps) => {
-  return (
-    <>
-      <PageHeader title={title} backLink={backLink} />
-      <main>
-        {children}
-      </main>
-    </>
-  )
-}
+const PageLayout = ({ children, title, backLink }: PageLayoutProps) => (
+  <>
+    <PageHeader title={title} backLink={backLink} />
+    <main>
+      {children}
+    </main>
+  </>
+);
 
 export default PageLayout;
