@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
 import { getBestScoresByUser } from '@/helpers';
-import useScoresProvider from '@/hooks/use-scores-provider';
+import useAppDataProvider from '@/hooks/use-app-data-provider';
 import BestScoresTable from '@/components/best-scores-table';
 
 const BestScoresTableContainer = () => {
-  const { users, scores } = useScoresProvider();
+  const { users, scores } = useAppDataProvider();
   const rankingData = useMemo(() => getBestScoresByUser(users, scores), [users, scores]);
   
   return (

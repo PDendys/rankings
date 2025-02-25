@@ -8,11 +8,11 @@ import {
   ModalCloseButton
 } from '@chakra-ui/react';
 import { Button, useDisclosure } from '@northlight/ui';
-import useScoresProvider from '@/hooks/use-scores-provider';
+import useAppDataProvider from '@/hooks/use-app-data-provider';
 import ExcelDropzone, { type ExcelRowType } from '@/components/excel-dropzone';
 
 const ImportScoreContainer = () => {
-  const { addMultipleScores } = useScoresProvider()
+  const { addMultipleScores } = useAppDataProvider()
   const { isOpen, onOpen, onClose } = useDisclosure();
   
   const handleOnDrop = (values: ExcelRowType[]): void => {

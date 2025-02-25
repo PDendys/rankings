@@ -9,10 +9,10 @@ import {
 } from '@chakra-ui/react';
 import { Button, useDisclosure } from '@northlight/ui';
 import AddScoreForm, { type AddScoreFormValuesType } from '@/components/add-score-form';
-import useScoresProvider from '@/hooks/use-scores-provider';
+import useAppDataProvider from '@/hooks/use-app-data-provider';
 
 const AddScoreFormContainer = () => {
-  const { addScore } = useScoresProvider()
+  const { addScore } = useAppDataProvider()
   const { isOpen, onOpen, onClose } = useDisclosure();
   
   const handleOnFormSubmit = (formValues: AddScoreFormValuesType): void => {

@@ -5,17 +5,17 @@ import type { ExcelRowType } from '@/components/excel-dropzone';
 import { getNextAvailableUserId, getUserByName } from '@/helpers';
 import { createNewUser, createNewScore } from './utils';
 
-type useManageScoresReturnType = {
+type useDataManageReturnType = {
   users: UserType[];
   scores: ScoreType[];
   addScore: (values: AddScoreFormValuesType) => void;
   addMultipleScores: (values: ExcelRowType[]) => void;
 };
 
-const useManageScores = (
+const useDataManage = (
   initialUsers: UserType[],
   initialScores: ScoreType[]
-): useManageScoresReturnType => {
+): useDataManageReturnType => {
   const [users, setUsers] = useState<UserType[]>(initialUsers);
   const [scores, setScores] = useState<ScoreType[]>(initialScores);
   
@@ -67,4 +67,4 @@ const useManageScores = (
   };
 }
 
-export default useManageScores;
+export default useDataManage;
