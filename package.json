@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "vite",
-    "test": "jest"
+    "test": "jest",
+    "build": "vite build"
   },
   "author": "",
   "license": "ISC",
